@@ -28,3 +28,14 @@ CREATE TABLE teatments(
   type VARCHAR(255),
   name VARCHAR(255)
 );
+
+CREATE TABLE invoice_items(
+  id SERIAL PRIMARY KEY,
+  unit_price DECIMAL,
+  quantity INTEGER,
+  total_price DECIMAL,
+  invoice_id INTEGER,
+  treatment_id INTEGER,
+  FOREIGN KEY (invoice_id) REFERENCES invoices(id),
+  FOREIGN KEY (treatment_id) REFERENCES treatments(id)
+);
