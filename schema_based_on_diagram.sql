@@ -23,7 +23,7 @@ CREATE TABLE invoices(
   FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id)
 );
 
-CREATE TABLE teatments(
+CREATE TABLE treatments(
   id SERIAL PRIMARY KEY,
   type VARCHAR(255),
   name VARCHAR(255)
@@ -51,4 +51,6 @@ CREATE INDEX idx_medical_histories_patient_id ON medical_histories(patient_id);
 CREATE INDEX idx_invoices_history_id ON invoices(medical_history_id);
 CREATE INDEX idx_invoice_items_invoice_id ON invoice_items(invoice_id);
 CREATE INDEX idx_invoice_items_treatment_id ON invoice_items(treatment_id);
+CREATE INDEX idx_medical_histories_has_treatment_medical_history_id ON medical_histories_has_treatment(medical_history_id);
+CREATE INDEX idx_medical_histories_has_treatment_treatment_id On medical_histories_has_treatment(treatment_id);
 
